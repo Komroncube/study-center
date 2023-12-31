@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider'
 import { NzButtonModule } from 'ng-zorro-antd/button'
 import { NzIconDirective, NzIconModule } from 'ng-zorro-antd/icon';
+import { TeacherService } from '../services/teachers.services';
+import { ITeacherResponse } from '../models/teachers.model';
 interface Person {
   key: string;
   name: string;
@@ -16,7 +18,7 @@ interface Person {
   templateUrl: './teacher-list.component.html',
   styleUrl: './teacher-list.component.css'
 })
-export class TeacherListComponent {
+export class TeacherListComponent implements OnInit {
   listOfData: Person[] = [
     {
       key: '1',
@@ -37,4 +39,14 @@ export class TeacherListComponent {
       address: 'Sidney No. 1 Lake Park'
     }
   ];
+  teachers:ITeacherResponse[] = []
+  /**
+   *
+   */
+  constructor(private $teacherService: TeacherService) {}
+  ngOnInit(): void {
+    this.$teacherService.getAll().subscribe(w =>{
+      console.log(w);
+    })
+  }
 }
