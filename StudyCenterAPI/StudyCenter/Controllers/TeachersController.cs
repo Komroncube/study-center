@@ -27,20 +27,20 @@ namespace StudyCenter.Controllers
 
 		// GET: api/Teachers
 		[HttpGet]
-				public async Task<ActionResult<IEnumerable<Teacher>>> GetTeachers()
+				public async Task<IEnumerable<Teacher>> GetTeachers()
 				{
 						return await _context.Teachers.ToListAsync();
 				}
 
 				// GET: api/Teachers/5
 				[HttpGet("{id}")]
-				public async Task<ActionResult<Teacher>> GetTeacher(int id)
+				public async Task<Teacher?> GetTeacher(int id)
 				{
 						var teacher = await _context.Teachers.FindAsync(id);
 
 						if (teacher == null)
 						{
-								return NotFound();
+                return null;
 						}
 
 						return teacher;
@@ -65,14 +65,14 @@ namespace StudyCenter.Controllers
 				// POST: api/Teachers
 				// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 				[HttpPost]
-				public async Task<ActionResult<Teacher>> PostTeacher(TeacherDto teacherDto)
+				public async Task<Teacher> PostTeacher(TeacherDto teacherDto)
 				{
 						var teacher = _mapper.Map<Teacher>(teacherDto);
 						_context.Teachers.Add(teacher);
 						await _context.SaveChangesAsync();
 
 				 
-						return CreatedAtAction("GetTeacher", new { id = teacher.Id }, teacher);
+						return teacher;
 				}
 
 				// DELETE: api/Teachers/5
