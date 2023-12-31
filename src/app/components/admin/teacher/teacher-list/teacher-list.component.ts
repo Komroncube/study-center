@@ -45,8 +45,13 @@ export class TeacherListComponent implements OnInit {
    */
   constructor(private $teacherService: TeacherService) {}
   ngOnInit(): void {
-    this.$teacherService.getAll().subscribe(w =>{
-      console.log(w);
-    })
+    this.$teacherService.getAll().subscribe(teacher=>{
+      console.log(teacher);
+      this.teachers = teacher
+    });
   }
+
+  //   this.$teacherService.getComments().subscribe(x=>
+  //     console.log(x))
+  // }
 }

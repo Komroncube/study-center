@@ -1,19 +1,33 @@
-<nz-table #basicTable [nzData]="listOfData">
+<nz-table #basicTable [nzData]="teachers">
   <thead>
     <tr>
+      <th>Id</th>
       <th>Name</th>
-      <th>Age</th>
+      <th>Description</th>
       <th>Address</th>
+      <th>Date of birth</th>
+      <th>Date of registration</th>
+      <th>Phone number</th>
+      <th>Email</th>
+      <th>Telegram username</th>
+      <th>Specialization</th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
-    @for(data of basicTable.data; track data.key)
+    @for(data of basicTable.data; track data.id)
     {
         <tr>
+          <td>{{data.id}}</td>
           <td>{{data.name}}</td>
-          <td>{{data.age}}</td>
+          <td>{{data.description}}</td>
           <td>{{data.address}}</td>
+          <td>{{data.dateOfBirth}}</td>
+          <td>{{data.dateOfRegister}}</td>
+          <td>{{data.phone}}</td>
+          <td>{{data.email}}</td>
+          <td>{{data.telegramUserName}}</td>
+          <td>{{data.specialization}}</td>
           <td>
             <nz-button-group>
               <button nz-button>
