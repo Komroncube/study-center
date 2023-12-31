@@ -6,12 +6,14 @@ export const ADMIN_ROUTES: Routes = [
     {
         path:'',
         component: AdminComponent,
-        title: "Admin sahifasi"
-
+        title: "Admin sahifasi",
+        children: [
+            {
+                path: 'teacher',
+                loadChildren: () => import('./teacher/teacher.routes')
+                    .then(teacher => teacher.TEACHER_ROUTES)
+            }
+        ]
     },
-    {
-        path: 'teacher',
-        component: TeacherComponent,
-        title: "Teacher page"
-    }
+    
 ]
