@@ -3,8 +3,8 @@ export interface ITeacherResponse {
     name:string,
     description:string,
     address:string,
-    dateOfBirth:string, //date
-    dateOfRegister:string, //date
+    dateOfBirth:Date, //date
+    dateOfRegister:Date, //date
     phone:string,
     email:string,
     telegramUserName:string,
