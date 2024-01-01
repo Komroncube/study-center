@@ -3,7 +3,7 @@ export interface ITeacherResponse {
     name:string,
     description:string,
     address:string,
-    dateOfBirth:Date, //date
+    dateOfBirth: Date, //date
     dateOfRegister:Date, //date
     phone:string,
     email:string,

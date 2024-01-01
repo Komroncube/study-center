@@ -13,7 +13,7 @@ export class TeacherService {
      * @param http 
      */
     constructor(private http: HttpClient) { }
-    fullurl = 'http://localhost:5018/api/Teachers'
+    fullurl = 'http://127.0.0.1:5018/api/Teachers'
     getAll() {
         return this.http.get<ITeacherResponse[]>(this.fullurl, {headers: new HttpHeaders({'Access-Control-Allow-Origin':'*'})})
     }
