@@ -2,15 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider'
 import { NzButtonModule } from 'ng-zorro-antd/button'
-import { NzIconDirective, NzIconModule } from 'ng-zorro-antd/icon';
+import { NzIconModule, NzIconDirective } from 'ng-zorro-antd/icon';
+import { StepBackwardOutline, CaretLeftOutline, SettingOutline} from '@ant-design/icons-angular/icons'
+import { IconDefinition } from '@ant-design/icons-angular';
 import { TeacherService } from '../services/teachers.services';
 import { ITeacherResponse } from '../models/teachers.model';
-interface Person {
-  key: string;
-  name: string;
-  age: number;
-  address: string;
-}
+
+const icons: IconDefinition[] =  [
+  StepBackwardOutline,
+  CaretLeftOutline,
+  SettingOutline
+];
 @Component({
   selector: 'app-teacher-list',
   standalone: true,
@@ -19,26 +21,8 @@ interface Person {
   styleUrl: './teacher-list.component.css'
 })
 export class TeacherListComponent implements OnInit {
-  listOfData: Person[] = [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park'
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park'
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park'
-    }
-  ];
+ 
+  
   teachers:ITeacherResponse[] = []
   /**
    *
@@ -46,7 +30,12 @@ export class TeacherListComponent implements OnInit {
   constructor(private $teacherService: TeacherService) {}
   ngOnInit(): void {
     this.$teacherService.getAll().subscribe(teacher=>{
-      console.log(teacher);
+      
+      teacher.forEach(item => {
+        console.log(item.dateOfRegister)
+        console.log(typeof item.dateOfRegister);
+      })
+      console.log();
       this.teachers = teacher
     });
   }
