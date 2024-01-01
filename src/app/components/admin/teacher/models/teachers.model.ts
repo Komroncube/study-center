@@ -14,8 +14,8 @@ export interface ITeacherRequest {
     name: string,
     description: string,
     address: string,
-    dateOfBirth: Date, //date
-    dateOfRegister: Date, //date
+    dateOfBirth: string, //date
+    dateOfRegister: string, //date
     phone: string,
     email: string,
     telegramUserName: string,
