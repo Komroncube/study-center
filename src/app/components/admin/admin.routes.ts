@@ -1,7 +1,5 @@
 import { Routes } from "@angular/router";
 import { AdminComponent } from "./admin.component";
-import { TeacherComponent } from "./teacher/teacher.component";
-
 export const ADMIN_ROUTES: Routes = [ 
     {
         path:'',

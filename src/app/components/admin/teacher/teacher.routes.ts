@@ -1,11 +1,12 @@
 import { Routes } from "@angular/router";
 import { TeacherListComponent } from "./teacher-list/teacher-list.component";
 import { AddEditTeacherComponent } from "./add-edit-teacher/add-edit-teacher.component";
+import { TeacherComponent } from "./teacher.component";
 
 export const TEACHER_ROUTES: Routes = [ 
     {
         path:'',
-        redirectTo: 'teacher-list',
+        component: TeacherComponent,
         pathMatch: 'full',
     },
     {
@@ -15,12 +16,12 @@ export const TEACHER_ROUTES: Routes = [
     },
     {
         path: 'add-teacher',
-        component: AddEditTeacherComponent
+        component: AddEditTeacherComponent,
+        title: "add-teacher"
     },
     {
         path: 'edit-teacher/:id',
-        component: AddEditTeacherComponent
+        component: AddEditTeacherComponent,
+        title: "edit-teacher"
     }
-    
-    
 ]
