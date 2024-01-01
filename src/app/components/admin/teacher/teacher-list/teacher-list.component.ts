@@ -7,6 +7,7 @@ import { StepBackwardOutline, CaretLeftOutline, SettingOutline} from '@ant-desig
 import { IconDefinition } from '@ant-design/icons-angular';
 import { TeacherService } from '../services/teachers.services';
 import { ITeacherResponse } from '../models/teachers.model';
+import { RouterLink } from '@angular/router';
 
 const icons: IconDefinition[] =  [
   StepBackwardOutline,
@@ -16,7 +17,7 @@ const icons: IconDefinition[] =  [
 @Component({
   selector: 'app-teacher-list',
   standalone: true,
-  imports: [NzDividerModule, NzTableModule, NzButtonModule, NzIconModule, NzIconDirective],
+  imports: [NzDividerModule, NzTableModule, NzButtonModule, NzIconModule, NzIconDirective, RouterLink],
   templateUrl: './teacher-list.component.html',
   styleUrl: './teacher-list.component.css'
 })
