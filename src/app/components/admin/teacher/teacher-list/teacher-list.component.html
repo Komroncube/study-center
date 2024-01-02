@@ -27,23 +27,23 @@
         <td>{{data.dateOfRegister}}</td>
         <td>{{data.phone}}</td>
         <td>{{data.email}}</td>
-          <td>{{data.telegramUserName}}</td>
-          <td>{{data.specialization}}</td>
-          <td>
-            <nz-button-group>
-              <button nz-button>
-                <span nz-icon nzType="delete" nzTheme="twotone"></span>
-              </button>
-              <button nz-button>
-                <!-- <span nz-icon nzType="diff" nzTheme="twotone"></span> -->
-                <span nz-icon nzType="edit" nzTheme="twotone"></span>
-              </button>
-            </nz-button-group>
-          </td>
+        <td>{{data.telegramUserName}}</td>
+        <td>{{data.specialization}}</td>
+        <td>
+          <nz-button-group>
+            <button nz-button>
+              <span nz-icon nzType="delete" nzTheme="twotone"></span>
+            </button>
+            <button nz-button>
+              <!-- <span nz-icon nzType="diff" nzTheme="twotone"></span> -->
+              <span nz-icon nzType="edit" nzTheme="twotone"></span>
+            </button>
+          </nz-button-group>
+        </td>
         </tr>
         
       }
   </tbody>
 </nz-table>
 <button routerLink="./teacher/add-teacher" nz-button nzType="primary" style="margin-right: 10px;">Add</button>
-<button [routerLink]="'../add-teacher'" nz-button nzType="primary">/add-teacher</button>
+<button nz-button nzType="primary" (click)="loadteachers()">/add-teacher</button>
