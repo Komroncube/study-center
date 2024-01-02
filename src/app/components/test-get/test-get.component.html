@@ -1,0 +1,25 @@
+
+<table>
+    <tbody>
+
+    @for (teacher of teachers; track teacher.id) {
+        <tr>
+            <td>{{teacher.id}}</td>
+            <td>{{teacher.name}}</td>
+            <td>{{teacher.description}}</td>
+            <td>{{teacher.address}}</td>
+        <td>{{teacher.dateOfBirth}}</td>
+        <td>{{teacher.dateOfRegister}}</td>
+        <td>{{teacher.phone}}</td>
+        <td>{{teacher.email}}</td>
+        <td>{{teacher.telegramUserName}}</td>
+        <td>{{teacher.specialization}}</td>
+        
+    </tr>
+       
+}
+
+</tbody>
+</table>
+
+{{ json }}
