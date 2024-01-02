@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider'
 import { NzButtonModule } from 'ng-zorro-antd/button'
@@ -8,6 +8,7 @@ import { IconDefinition } from '@ant-design/icons-angular';
 import { TeacherService } from '../services/teachers.services';
 import { ITeacherResponse } from '../models/teachers.model';
 import { RouterLink } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 const icons: IconDefinition[] =  [
   StepBackwardOutline,
@@ -21,8 +22,8 @@ const icons: IconDefinition[] =  [
   templateUrl: './teacher-list.component.html',
   styleUrl: './teacher-list.component.css'
 })
-export class TeacherListComponent implements OnInit {
- 
+export class TeacherListComponent implements OnInit, OnDestroy {
+  subsribtion?: Subscription
   
   teachers:ITeacherResponse[] = []
   /**
@@ -30,17 +31,28 @@ export class TeacherListComponent implements OnInit {
    */
   constructor(private $teacherService: TeacherService) {}
   ngOnInit(): void {
-    this.$teacherService.getAll().subscribe(teacher=>{
+    this.subsribtion = this.$teacherService.getAll().subscribe(teacher=>{
       
       teacher.forEach(item => {
-        console.log(item.dateOfRegister)
-        console.log(typeof item.dateOfRegister);
+        console.log(item)
+        //console.log(typeof item.dateOfRegister);
       })
       console.log();
       this.teachers = teacher
+      
+      
     });
   }
-
+  ngOnDestroy() {
+    this.subsribtion?.unsubscribe()
+  }
+  loadteachers(){
+    this.$teacherService.getAll().subscribe(teachers=> {
+      console.log('empty');
+      console.log(teachers);
+      this.teachers = teachers
+    })
+  }
   //   this.$teacherService.getComments().subscribe(x=>
   //     console.log(x))
   // }
