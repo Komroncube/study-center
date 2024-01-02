@@ -5,9 +5,9 @@ namespace StudyCenter;
 
 public class StudyCenterDbContext : DbContext
 {
-  public StudyCenterDbContext(DbContextOptions<StudyCenterDbContext> options): base(options)
+  public StudyCenterDbContext(DbContextOptions<StudyCenterDbContext> options) : base(options)
   {
-      
+
   }
   public DbSet<Teacher> Teachers { get; set; }
 }
