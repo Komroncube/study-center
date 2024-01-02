@@ -1,4 +1,4 @@
-<button [routerLink]="['add-teacher']" nz-button nzType="primary">add-teacher</button>
+<button [routerLink]="['../add-teacher']" nz-button nzType="primary">add-teacher</button>
 <nz-table #basicTable [nzData]="teachers">
   <thead>
     <tr>
@@ -46,4 +46,4 @@
   </tbody>
 </nz-table>
 <button routerLink="./teacher/add-teacher" nz-button nzType="primary" style="margin-right: 10px;">Add</button>
-<button routerLink="add-teacher" nz-button nzType="primary">/add-teacher</button>
+<button [routerLink]="'../add-teacher'" nz-button nzType="primary">/add-teacher</button>

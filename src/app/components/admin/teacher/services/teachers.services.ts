@@ -18,6 +18,10 @@ export class TeacherService {
         return this.http.get<ITeacherResponse[]>(this.fullurl, {headers: new HttpHeaders({'Access-Control-Allow-Origin':'*'})})
     }
     add(model:ITeacherRequest) {
-        return this.http.post<ITeacherResponse>(this.url, model)
+        const headers = new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('Access-Control-Allow-Origin', '*');
+        console.log(model);
+        return this.http.post<ITeacherResponse>(this.fullurl, JSON.stringify(model), {headers })
     }
 }
