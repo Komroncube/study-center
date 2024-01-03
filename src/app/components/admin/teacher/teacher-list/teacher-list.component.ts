@@ -7,8 +7,9 @@ import { StepBackwardOutline, CaretLeftOutline, SettingOutline} from '@ant-desig
 import { IconDefinition } from '@ant-design/icons-angular';
 import { TeacherService } from '../services/teachers.services';
 import { ITeacherResponse } from '../models/teachers.model';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 const icons: IconDefinition[] =  [
   StepBackwardOutline,
@@ -29,7 +30,10 @@ export class TeacherListComponent implements OnInit, OnDestroy {
   /**
    *
    */
-  constructor(private $teacherService: TeacherService) {}
+  constructor(
+    private $teacherService: TeacherService,
+    private router: Router,
+    private route: ActivatedRoute) {}
   ngOnInit(): void {
     this.subsribtion = this.$teacherService.getAll().subscribe(teacher=>{
       
@@ -53,7 +57,8 @@ export class TeacherListComponent implements OnInit, OnDestroy {
       this.teachers = teachers
     })
   }
-  //   this.$teacherService.getComments().subscribe(x=>
-  //     console.log(x))
-  // }
+  edit(id:number) {
+    // edit/3
+    this.router.navigate(['../edit-teacher', id], {relativeTo: this.route})
+  }
 }
