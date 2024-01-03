@@ -4,8 +4,9 @@ import { NzFormModule } from 'ng-zorro-antd/form'
 import { NzInputModule} from 'ng-zorro-antd/input'
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TeacherService } from '../services/teachers.services';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-edit-teacher',
   standalone: true,
@@ -29,15 +30,32 @@ export class AddEditTeacherComponent {
   /**
    *
    */
-  constructor(private fb: FormBuilder, private $teacherService: TeacherService) {
-    
+  constructor(
+    private fb: FormBuilder, 
+    private $teacherService: TeacherService, 
+    private router: Router, 
+    private route: ActivatedRoute) {
     
   }
   add() {
     if(this.form.invalid){
+      Object.values(this.form.controls).forEach(control => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
+        }
+      });
       return;
     }
     const request = this.form.getRawValue()
-    return this.$teacherService.add(request).subscribe()
+    return this.$teacherService.add(request).subscribe(result =>{
+      if(result)
+      {
+        this.router.navigate(['../'], {relativeTo: this.route})
+      }
+    })
+  }
+  resetForm() {
+    this.form.reset()
   }
 }
