@@ -1,4 +1,4 @@
-<button [routerLink]="['../add-teacher']" nz-button nzType="primary">add-teacher</button>
+<button [routerLink]="['../add-teacher']" nz-button nzType="primary">Add</button>
 <nz-table #basicTable [nzData]="teachers">
   <thead>
     <tr>
@@ -16,19 +16,19 @@
     </tr>
   </thead>
   <tbody>
-    @for(data of basicTable.data; track data.id)
+    @for(teacher of basicTable.data; track teacher.id)
     {
       <tr>
-        <td>{{data.id}}</td>
-        <td>{{data.name}}</td>
-        <td>{{data.description}}</td>
-        <td>{{data.address}}</td>
-        <td>{{data.dateOfBirth}}</td>
-        <td>{{data.dateOfRegister}}</td>
-        <td>{{data.phone}}</td>
-        <td>{{data.email}}</td>
-        <td>{{data.telegramUserName}}</td>
-        <td>{{data.specialization}}</td>
+        <td>{{teacher.id}}</td>
+        <td>{{teacher.name}}</td>
+        <td>{{teacher.description}}</td>
+        <td>{{teacher.address}}</td>
+        <td>{{teacher.dateOfBirth}}</td>
+        <td>{{teacher.dateOfRegister}}</td>
+        <td>{{teacher.phone}}</td>
+        <td>{{teacher.email}}</td>
+        <td>{{teacher.telegramUserName}}</td>
+        <td>{{teacher.specialization}}</td>
         <td>
           <nz-button-group>
             <button nz-button>
@@ -36,7 +36,7 @@
             </button>
             <button nz-button>
               <!-- <span nz-icon nzType="diff" nzTheme="twotone"></span> -->
-              <span nz-icon nzType="edit" nzTheme="twotone"></span>
+              <span nz-icon nzType="edit" nzTheme="twotone" (click)="edit(teacher.id)"></span>
             </button>
           </nz-button-group>
         </td>
@@ -45,5 +45,5 @@
       }
   </tbody>
 </nz-table>
-<button routerLink="./teacher/add-teacher" nz-button nzType="primary" style="margin-right: 10px;">Add</button>
-<button nz-button nzType="primary" (click)="loadteachers()">/add-teacher</button>
+<button [routerLink]="['../add-teacher']" nz-button nzType="primary" style="margin-right: 10px;">Add</button>
+<button nz-button nzType="primary" (click)="loadteachers()">load-teachers</button>
