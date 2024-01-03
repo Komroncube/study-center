@@ -6,7 +6,7 @@ import { TeacherComponent } from "./teacher.component";
 export const TEACHER_ROUTES: Routes = [ 
     {
         path:'',
-        component: TeacherComponent,
+        redirectTo: 'teacher-list',
         pathMatch: 'full',
     },
     {
