@@ -1,7 +1,17 @@
-/* @import "../node_modules//ng-zorro-antd//ng-zorro-antd.min.css"; */
+@import "../node_modules//ng-zorro-antd//ng-zorro-antd.min.css";
 
 @import "tailwindcss/base";
 
 @import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
+
+@layer reset, primeng;
+
+/* Reset CSS */
+@layer reset {
+    button,
+    input {
+        /* CSS to Reset */
+    }
+}
