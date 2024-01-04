@@ -52,7 +52,7 @@ namespace StudyCenter.Controllers
       }
       _mapper.Map(teacherDto, teacher);
       int res = await _context.SaveChangesAsync();
-      return Ok(res > 0);
+      return Ok(teacher);
 
     }
 
