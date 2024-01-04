@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ITeacherRequest, ITeacherResponse } from "../models/teachers.model";
+import { Observable } from "rxjs";
 
 
 @Injectable({
@@ -24,7 +25,10 @@ export class TeacherService {
         console.log(model);
         return this.http.post<ITeacherResponse>(this.url, JSON.stringify(model), {headers })
     }
-    getById(id:number){
+    getById(id:number):Observable<ITeacherResponse> {
         return this.http.get<ITeacherResponse>(`${this.url}/${id}`)
+    }
+    update(id: Number, model: ITeacherRequest){
+        return this.http.put(`${this.url}/${id}`, model)
     }
 }
