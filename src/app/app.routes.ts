@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { getTestBed } from '@angular/core/testing';
 import { TestGetComponent } from './components/test-get/test-get.component';
+import { MenuHeaderComponent } from './components/menu-header/menu-header.component';
 
 export const routes: Routes = [
     {
@@ -23,6 +24,10 @@ export const routes: Routes = [
     {
         path: 'test',
         component: TestGetComponent
+    },
+    {
+        path: 'menu',
+        component: MenuHeaderComponent
     },
     {
         path: '**',
