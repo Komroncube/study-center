@@ -52,8 +52,7 @@ export class TeacherListComponent implements OnInit, OnDestroy {
   }
   loadteachers(){
     this.$teacherService.getAll().subscribe(teachers=> {
-      console.log('empty');
-      console.log(teachers);
+      
       this.teachers = teachers
     })
   }
