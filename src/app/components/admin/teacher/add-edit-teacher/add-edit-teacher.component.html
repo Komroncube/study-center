@@ -1,6 +1,7 @@
 
 <h3 class="title">
-    <span nz-icon nzType="arrow-left" nzTheme="outline" [routerLink] = "['../teacher-list']"></span> Add teacher
+    <span nz-icon nzType="arrow-left" nzTheme="outline" [routerLink] = "[isEdit ? '../../' : '../' ]"></span>
+    {{ isEdit ? 'Edit teacher' : 'Add teacher'}}
 </h3>
 <form nz-form [formGroup]="form" [nzLayout]="'horizontal'">
     <!-- NAME -->
@@ -74,7 +75,9 @@
         </nz-form-control>
       </nz-form-item>
     <div class="d-flex gap-1 justify-content-end">
-        <button nz-button nzType="primary" (click)="add()">Add</button>
+        <button nz-button nzType="primary" (click)="submit()">
+          {{isEdit ? 'Save' : 'Add'}}
+        </button>
         <button nz-button (click)="resetForm()">Clear</button>
     </div>
   </form>
