@@ -21,7 +21,11 @@ const icons: IconDefinition[] =  [
   standalone: true,
   imports: [NzDividerModule, NzTableModule, NzButtonModule, NzIconModule, NzIconDirective, RouterLink],
   templateUrl: './teacher-list.component.html',
-  styleUrl: './teacher-list.component.css'
+  styles: `
+    #basictable {
+      margin-top: 10px;
+    }
+    `
 })
 export class TeacherListComponent implements OnInit, OnDestroy {
   subsribtion?: Subscription

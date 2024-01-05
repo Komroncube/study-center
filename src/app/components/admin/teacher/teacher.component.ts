@@ -6,6 +6,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: `./teacher.component.html`,
-  styleUrl: './teacher.component.css',
+  styles: `
+    :host {
+      display: block;
+    }
+  `
 })
 export class TeacherComponent { }
