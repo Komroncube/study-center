@@ -35,18 +35,18 @@ export class TeacherListComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute) {}
   ngOnInit(): void {
-    this.subsribtion = this.$teacherService.getAll().subscribe(teacher=>{
-      
-      teacher.forEach(item => {
-        console.log(item)
-        //console.log(typeof item.dateOfRegister);
-      })
-      console.log();
-      this.teachers = teacher
-      
-      
+    this.getAll();
+  }
+  private getAll() {
+    this.subsribtion = this.$teacherService.getAll().subscribe(teachers => {
+
+      teachers.forEach(item => {
+        console.log(item);
+      });
+      this.teachers = teachers;
     });
   }
+
   ngOnDestroy() {
     this.subsribtion?.unsubscribe()
   }
@@ -59,5 +59,11 @@ export class TeacherListComponent implements OnInit, OnDestroy {
   edit(id:number) {
     // edit/3
     this.router.navigate(['../edit-teacher', id], {relativeTo: this.route})
+  }
+  delete(id:number) {
+    this.$teacherService.delete(id).subscribe(result => {
+      console.log(result);
+      this.getAll()
+    })
   }
 }
