@@ -31,4 +31,7 @@ export class TeacherService {
     update(id: Number, model: ITeacherRequest){
         return this.http.put(`${this.url}/${id}`, model)
     }
+    delete(id:Number) {
+        return this.http.delete(`${this.url}/${id}`)
+    }
 }
