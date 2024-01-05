@@ -1,0 +1,7 @@
+<form [formGroup] ="form" (submit)="submit()">
+    <div class="card flex justify-content-center">
+        <input pInputText pKeyFilter="int" placeholder="Integers" formControlName="word" [(ngModel)]="value" />
+    </div>
+    <button type="submit">SUBMIT</button>
+
+</form>
