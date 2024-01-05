@@ -5,21 +5,22 @@ import { MenuItem } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
 import { InputTextModule } from 'primeng/inputtext';
 import { AccordionModule } from 'primeng/accordion';
+import { ChildDemoComponent } from "./child-demo/child-demo.component";
+import { AccordionComponent } from "./accordion/accordion.component";
+import { PlaygroundComponent } from "./playground/playground.component";
 @Component({
     selector: 'app-test-get',
     standalone: true,
     templateUrl: './test-get.component.html',
     styleUrl: './test-get.component.css',
-    imports: [FooterMacComponent, MenubarModule, InputTextModule, AccordionModule]
+    imports: [FooterMacComponent, MenubarModule, InputTextModule, ChildDemoComponent, AccordionComponent, PlaygroundComponent]
 })
 export class TestGetComponent implements OnInit {
-  teachers! : ITeacherResponse[]
-  json!:string
-  /**
-   *
-   */
+
   items: MenuItem[] | undefined;
-  value:string|undefined;
+  value:string = "E boy"
+
+
     ngOnInit() {
         this.items = [
             {
@@ -145,4 +146,8 @@ export class TestGetComponent implements OnInit {
             }
         ];
     }
+  handleMessage(message:number) {
+    window.alert(message)
+  }
+
 }
