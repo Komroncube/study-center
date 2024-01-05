@@ -6,12 +6,5 @@
 
 @import "tailwindcss/utilities";
 
-@layer reset, primeng;
+@layer primeng;
 
-/* Reset CSS */
-@layer reset {
-    button,
-    input {
-        /* CSS to Reset */
-    }
-}
