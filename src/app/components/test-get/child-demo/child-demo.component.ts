@@ -27,6 +27,6 @@ export class ChildDemoComponent {
   }
   incrementAndDouble() {
     this.counter += 1
-    this.counterChange.emit(this.counter * 2)
+    this.counterChange.emit(this.counter)
   }
 }
