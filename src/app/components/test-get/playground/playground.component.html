@@ -9,3 +9,7 @@
 <app-child-demo [counter]="counter" (counterChange)="handleChange($event)"> </app-child-demo>
 <!-- <button type="button" (click)="increase()">Increase</button> -->
 <h1> {{childCounter}}</h1>
+<br>
+<app-child-demo [(counter)]="twoWayCounter"></app-child-demo>
+<h1>{{ twoWayCounter }}</h1>
+
