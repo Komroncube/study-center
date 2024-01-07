@@ -1,7 +1,11 @@
-<form [formGroup] ="form" (submit)="submit()">
-    <div class="card flex justify-content-center">
-        <input pInputText pKeyFilter="int" placeholder="Integers" formControlName="word" [(ngModel)]="value" />
-    </div>
-    <button type="submit">SUBMIT</button>
+<h1>Playground</h1>
+<input placeholder="hello" [(ngModel)] = "text">
+<br>
+<button type="button" (click)="submit()">Submit</button>
+<br>
+<br>
+<br>
 
-</form>
+<app-child-demo [counter]="counter" (counterChange)="handleChange($event)"> </app-child-demo>
+<!-- <button type="button" (click)="increase()">Increase</button> -->
+<h1> {{childCounter}}</h1>
