@@ -19,7 +19,8 @@ export class TestGetComponent implements OnInit {
 
   items: MenuItem[] | undefined;
   value:string = "E boy"
-
+  childCounter:number = 23
+  counter: number = 23
 
     ngOnInit() {
         this.items = [
@@ -148,6 +149,9 @@ export class TestGetComponent implements OnInit {
     }
   handleMessage(message:number) {
     window.alert(message)
+  }
+  handleChange(message:number) {
+    this.counter = message
   }
 
 }

@@ -16,6 +16,8 @@
 
     <app-playground></app-playground>
 
+    <app-child-demo [counter]="childCounter" (onCounterChange)="handleChange($event)"> </app-child-demo>
+    <h1>{{ counter }}</h1>
 
 </div>
 <app-footer-mac></app-footer-mac>
