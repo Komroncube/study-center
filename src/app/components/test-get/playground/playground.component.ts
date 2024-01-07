@@ -31,6 +31,7 @@ export class PlaygroundComponent {
   
   counter :number = 3;
   childCounter: number = 0;
+  twoWayCounter:number = 0;
 
   /**
    * 
