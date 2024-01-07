@@ -14,7 +14,7 @@ export class ChildDemoComponent {
   onClickBtn = new EventEmitter<number>();
 
   @Output()
-  onCounterChange = new EventEmitter<number>();
+  counterChange = new EventEmitter<number>();
 
   @Input()
   counter:number = 0
@@ -27,6 +27,6 @@ export class ChildDemoComponent {
   }
   incrementAndDouble() {
     this.counter += 1
-    this.onCounterChange.emit(this.counter * 2)
+    this.counterChange.emit(this.counter * 2)
   }
 }
