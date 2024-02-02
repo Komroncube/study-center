@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider'
 import { NzButtonModule } from 'ng-zorro-antd/button'
@@ -8,8 +8,9 @@ import { IconDefinition } from '@ant-design/icons-angular';
 import { TeacherService } from '../services/teachers.services';
 import { ITeacherResponse } from '../models/teachers.model';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 const icons: IconDefinition[] =  [
   StepBackwardOutline,
@@ -19,7 +20,14 @@ const icons: IconDefinition[] =  [
 @Component({
   selector: 'app-teacher-list',
   standalone: true,
-  imports: [NzDividerModule, NzTableModule, NzButtonModule, NzIconModule, NzIconDirective, RouterLink],
+  imports: [
+    NzDividerModule, 
+    NzTableModule, 
+    NzButtonModule, 
+    NzIconModule, 
+    NzIconDirective, 
+    RouterLink, 
+    CommonModule],
   templateUrl: './teacher-list.component.html',
   styles: `
     #basictable {
@@ -27,39 +35,36 @@ const icons: IconDefinition[] =  [
     }
     `
 })
-export class TeacherListComponent implements OnInit, OnDestroy {
-  subsribtion?: Subscription
+export class TeacherListComponent {
   
-  teachers:ITeacherResponse[] = []
   /**
-   *
+   * 
+   */
+  teachers$:Observable<ITeacherResponse[]>;
+  /**
+   * 
+   * @param $teacherService
+   * @param router 
+   * @param route 
    */
   constructor(
     private $teacherService: TeacherService,
     private router: Router,
-    private route: ActivatedRoute) {}
-  ngOnInit(): void {
-    this.getAll();
-  }
-  private getAll() {
-    this.subsribtion = this.$teacherService.getAll().subscribe(teachers => {
+    private route: ActivatedRoute) {
 
-      teachers.forEach(item => {
-        console.log(item);
-      });
-      this.teachers = teachers;
-    });
-  }
+      this.teachers$ = this.$teacherService.getAll();
 
-  ngOnDestroy() {
-    this.subsribtion?.unsubscribe()
-  }
+    }
+
+
+
   loadteachers(){
-    this.$teacherService.getAll().subscribe(teachers=> {
-      
-      this.teachers = teachers
-    })
+    this.teachers$ = this.$teacherService.getAll();
   }
+  /**
+   * 
+   * @param id 
+   */
   edit(id:number) {
     // edit/3
     this.router.navigate(['../edit-teacher', id], {relativeTo: this.route})
@@ -67,7 +72,7 @@ export class TeacherListComponent implements OnInit, OnDestroy {
   delete(id:number) {
     this.$teacherService.delete(id).subscribe(result => {
       console.log(result);
-      this.getAll()
     })
+    this.teachers$ = this.$teacherService.getAll();
   }
 }
