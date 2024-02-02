@@ -1,5 +1,17 @@
 <button [routerLink]="['../add-teacher']" nz-button nzType="primary">Add</button>
-<nz-table #basicTable [nzData]="teachers">
+<!-- <ng-container *ngIf = "teachers$|async as ustoz">
+  {{ustoz | json}}
+</ng-container> -->
+<!-- @if(teachers$| async)
+{
+
+}
+@else{
+  Loading...
+} -->
+<nz-table #basicTable 
+  [nzData]="(teachers$ | async)??[]" 
+  [nzLoading]="!(teachers$|async)">
   <thead>
     <tr>
       <th>Id</th>
@@ -23,8 +35,8 @@
         <td>{{teacher.name}}</td>
         <td>{{teacher.description}}</td>
         <td>{{teacher.address}}</td>
-        <td>{{teacher.dateOfBirth}}</td>
-        <td>{{teacher.dateOfRegister}}</td>
+        <td>{{teacher.dateOfBirth | date: 'mediumDate'}}</td>
+        <td>{{teacher.dateOfRegister | date: 'mediumDate'}}</td>
         <td>{{teacher.phone}}</td>
         <td>{{teacher.email}}</td>
         <td>{{teacher.telegramUserName}}</td>
